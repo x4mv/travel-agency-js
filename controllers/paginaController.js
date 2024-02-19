@@ -3,22 +3,28 @@ import { Viaje } from '../models/Viaje.js';
 
 
 
-const paginaInicio = async (req, res) => { // req => lo que se envia || res => lo que express nos responde
+const paginaInicio = async  (req, res) => { // req => lo que se envia || res => lo que express nos responde
     
 
-    try {
-        // consultar por 3 viajes 
-        const viajes = await Viaje.findAll({limit : 3});
+    // hacer las consultas con un promise
+    const promisesDb = []
 
+    // consulta por 3 viajes 
+    promisesDb.push(Viaje.findAll({limit : 3}));
+
+    // consulta por 3 testimonios
+    promisesDb.push(Testimonial.findAll({limit : 3}));
+
+    try {
         // consultar tres testimonios
-        const testimonios = await Testimonial.findAll({limit : 3});
+        const resultado = await Promise.all(promisesDb)
 
 
         res.render('inicio', {
             pagina: 'Inicio',
             clase: 'home',
-            viajes,
-            testimonios
+            viajes : resultado[0],
+            testimonios : resultado[1],
         })
 
     } catch (error) {
