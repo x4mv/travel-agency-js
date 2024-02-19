@@ -24,10 +24,31 @@ const paginaViajes = async (req, res) => { // req => lo que se envia || res => l
 
 
     res.render('viajes', {
-        pagina: 'Viajes',
+        pagina: 'Proximos viajes',
         viajes
     })
 }
+
+// muestra los detalles del viaje 
+
+const paginaDetalleViaje = async (req, res) =>{ 
+
+    const { slug } = req.params;
+
+
+    try {
+        
+        const viaje = await Viaje.findOne({where: { slug }})
+        res.render('viaje',{
+            pagina: 'Informacion Viaje',
+            viaje
+        })
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 
 const paginaTestimoniales = (req, res) => { // req => lo que se envia || res => lo que express nos responde
     
@@ -40,5 +61,6 @@ export {
     paginaInicio,
     paginaNosotros,
     paginaViajes,
-    paginaTestimoniales
+    paginaTestimoniales,
+    paginaDetalleViaje
 }
