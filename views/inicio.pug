@@ -1,6 +1,36 @@
 extends ./layout/index
 
+
+block slider 
+    .slider
+        h1 Rio de Janerio 
+        em aventura
+
 block contenido
     main.container.mt-5 
-        .row    
-            h1= pagina
+        h2.text-center.mb-5 Sobre Nosotros 
+        .row.mb-5
+            .col-md-6 
+                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                | Cras elit dui, volutpat ut felis in, sollicitudin convallis ipsum. Praesent nisi nunc, viverra et tellus eu, ultrices bibendum arcu. Donec libero magna, feugiat eget nisl sit amet, semper aliquet nisi. Quisque blandit, odio quis suscipit laoreet, ante tellus ultrices purus, id lobortis augue sem ut leo. Praesent eget faucibus mauris. Donec mollis lorem a nibh interdum rutrum. 
+                p In hendrerit quis nunc ac euismod. Fusce viverra diam finibus massa laoreet cursus. Sed lectus mi, eleifend sit amet congue in, eleifend id nisi. 
+                | Phasellus dolor nisi, rutrum in venenatis efficitur, lobortis sed tellus. Duis pretium orci nisl, in interdum turpis imperdiet eu. Curabitur sed massa massa. 
+                
+            .col-md-6
+                img(src="/img/inicio_nosotros.jpg", alt="imagen nosotros", class='img-fluid')
+        
+        include ./layout/bloque_viajes
+
+    .descuento
+        .container 
+            .row    
+                .col-md-6 
+                    .contenido 
+                        h3 9% de Descuento 
+                        p.titulo Viaje a Australia
+                        p.fecha 29 de Marzo de 2024
+                        p.precio $2,500 USD 
+    .container  
+        h2.mt-5.text-center Testimoniales
+        include ./layout/bloque_testimoniales
+

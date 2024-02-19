@@ -25,6 +25,9 @@ app.use( (req, res, next ) => {
     next();
 })
 
+// agregar el body parser para obtener los resultados del post de testimoniales 
+app.use(express.urlencoded({extended: true}))
+
 // definir la carpeta public para archivos estaticos
 app.use(express.static('public'));
 
